@@ -36,3 +36,21 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/api/products
+
+###
+GET http://localhost:8080/api/products/5
+
+###
+POST http://localhost:8080/api/products/6
+Content-Type: application/json
+
+{
+    "name": "Product Edit 1",
+    "description": "This is product Edit 3",
+    "price": 30.99,
+    "imageUrl": "",
+    "quantity": 3
+}
+
+###
+DELETE  http://localhost:8080/api/products/6

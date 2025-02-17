@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.airiel.product_management_system_backend.dto.ProductDto;
 import com.airiel.product_management_system_backend.entity.Product;
+import com.airiel.product_management_system_backend.exception.ResourceNotFoundException;
 import com.airiel.product_management_system_backend.mapper.ProductMapper;
 import com.airiel.product_management_system_backend.repository.ProductRepository;
 import com.airiel.product_management_system_backend.service.ProductService;
@@ -33,20 +34,28 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public ProductDto getProductById(Long id) {
         Product product = productRepository.findById(id)
-        .orElseThrow(()-> new RuntimeException("Product not found"));
+            .orElseThrow(()-> new ResourceNotFoundException("Product not found with id: " + id));
         return ProductMapper.mapToProductDto(product);
     }
 
     @Override
     public ProductDto updateProduct(Long id, ProductDto productDto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateProduct'");
+        Product product = productRepository.findById(id)
+            .orElseThrow(()-> new ResourceNotFoundException("Product not found with id: " + id));
+        product.setName(productDto.getName());
+        product.setDescription(productDto.getDescription());
+        product.setPrice(productDto.getPrice());
+        product.setImageUrl(productDto.getImageUrl());
+        product.setQuantity(productDto.getQuantity());
+        Product updatedProduct = productRepository.save(product);
+        return ProductMapper.mapToProductDto(updatedProduct);
     }
 
     @Override
     public void deleteProduct(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteProduct'");
+        Product product = productRepository.findById(id)
+            .orElseThrow(()-> new ResourceNotFoundException("Product not found with id: " + id));
+        productRepository.delete(product);
     }
 
 }
