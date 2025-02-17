@@ -57,7 +57,9 @@ const TableList = () => {
                 />
               </td>
               <td className="flex flex-col items-center m-2 text-lg">
-                <i className="fa-solid fa-pencil cursor-pointer"></i>
+                <Link to={`/product-form/${product.id}`}>
+                  <i className="fa-solid fa-pencil cursor-pointer"></i>
+                </Link>
                 <i className="fa-solid fa-trash-can text-red-500 pt-2 cursor-pointer"></i>
               </td>
             </tr>

@@ -26,6 +26,14 @@ createRoot(document.getElementById("root")!).render(
             </Layout>
           }
         />
+        <Route
+          path="/product-form/:productId"
+          element={
+            <Layout>
+              <AddEditForm />
+            </Layout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   </StrictMode>

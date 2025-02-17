@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from "react";
 
 import { API_URL } from "../../api/config";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const productStartingData = {
   name: "",
@@ -13,20 +13,43 @@ const productStartingData = {
 
 const ProductForm = () => {
   const navigate = useNavigate();
+  const { productId } = useParams();
   const [product, setProduct] = useState(productStartingData);
+
+  React.useEffect(() => {
+    if (productId) {
+      fetch(`${API_URL}/api/products/${productId}`)
+        .then((res) => res.json())
+        .then((data) => setProduct(data));
+    }
+  }, [productId]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const response = await fetch(`${API_URL}/api/products`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(product),
-    });
-    if (response.ok) {
-      console.log("Product created successfully");
-      navigate("/");
+    if (productId) {
+      const response = await fetch(`${API_URL}/api/products/${productId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+      });
+      if (response.ok) {
+        console.log("Product updated successfully");
+        navigate("/");
+      } else {
+        console.log("Error updating product");
+      }
     } else {
-      console.log("Error creating product");
+      const response = await fetch(`${API_URL}/api/products`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+      });
+      if (response.ok) {
+        console.log("Product created successfully");
+        navigate("/");
+      } else {
+        console.log("Error creating product");
+      }
     }
   };
 
@@ -38,7 +61,9 @@ const ProductForm = () => {
 
   return (
     <div className="mx-auto my-5 text-amber-50 bg-cyan-800 w-1/2 rounded-2xl p-5">
-      <h2 className="text-2xl font-bold mb-4">Create Product</h2>
+      <h2 className="text-2xl font-bold mb-4">
+        {productId ? "Update Product" : "Create Product"}
+      </h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block  text-sm font-bold mb-2" htmlFor="name">
@@ -127,7 +152,7 @@ const ProductForm = () => {
           type="submit"
           className="bg-violet-900 text-white px-4 py-2 rounded-md hover:bg-violet-700 cursor-pointer"
         >
-          Create Product
+          {productId ? "Update Product" : "Create Product"}
         </button>
       </form>
     </div>
