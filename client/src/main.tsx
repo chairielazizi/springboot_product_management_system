@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 import AddEditForm from "./components/AddEditForm/AddEditForm.tsx";
 import Layout from "./components/Layout/Layout.tsx";
+import ProductDisplay from "./components/ProductDisplay/ProductDisplay.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -31,6 +32,14 @@ createRoot(document.getElementById("root")!).render(
           element={
             <Layout>
               <AddEditForm />
+            </Layout>
+          }
+        />
+        <Route
+          path="/product-display"
+          element={
+            <Layout>
+              <ProductDisplay />
             </Layout>
           }
         />
