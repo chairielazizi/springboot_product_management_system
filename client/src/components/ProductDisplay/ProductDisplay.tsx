@@ -18,7 +18,7 @@ const ProductDisplay = () => {
           <div key={product.id} className="bg-white rounded-2xl p-4 shadow-md">
             <h3 className="text-lg font-bold mb-2">{product.name}</h3>
             <p className="text-sm mb-2">{product.description}</p>
-            <p className="text-sm mb-2">Price: ${product.price}</p>
+            <p className="text-sm mb-2">Price: RM{product.price}</p>
             <p className="text-sm mb-2">Quantity: {product.quantity}</p>
             <img
               src={product.imageUrl || "https://dummyimage.com/300"}

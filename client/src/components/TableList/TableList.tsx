@@ -20,6 +20,18 @@ const TableList = () => {
     fetchTableList();
   }, []);
 
+  const handleDelete = async (id: number) => {
+    const response = await fetch(`${API_URL}/api/products/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      console.log("Product deleted successfully");
+      fetchTableList();
+    } else {
+      console.log("Error deleting product");
+    }
+  };
+
   return (
     <div className="mx-auto mt-5 sm:mx-4 md:mx-auto lg:mx-auto xl:mx-auto">
       <div className="flex justify-end mb-4">
@@ -60,7 +72,9 @@ const TableList = () => {
                 <Link to={`/product-form/${product.id}`}>
                   <i className="fa-solid fa-pencil cursor-pointer"></i>
                 </Link>
-                <i className="fa-solid fa-trash-can text-red-500 pt-2 cursor-pointer"></i>
+                <button onClick={() => handleDelete(product.id)}>
+                  <i className="fa-solid fa-trash-can text-red-500 pt-2 cursor-pointer"></i>
+                </button>
               </td>
             </tr>
           ))}
