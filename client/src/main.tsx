@@ -5,7 +5,7 @@ import App from "./App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 import AddEditForm from "./components/AddEditForm/AddEditForm.tsx";
 import Layout from "./components/Layout/Layout.tsx";
-import ProductDisplay from "./components/ProductDisplay/ProductDisplay.tsx";
+import TableList from "./components/TableList/TableList.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -36,10 +36,10 @@ createRoot(document.getElementById("root")!).render(
           }
         />
         <Route
-          path="/product-display"
+          path="/product-management"
           element={
             <Layout>
-              <ProductDisplay />
+              <TableList />
             </Layout>
           }
         />

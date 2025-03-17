@@ -1,9 +1,9 @@
-import TableList from "./components/TableList/TableList";
+import ProductDisplay from "./components/ProductDisplay/ProductDisplay";
 
 function App() {
   return (
     <div className="flex flex-col">
-      <TableList />
+      <ProductDisplay />
       {/* <div className="flex-grow"></div> */}
     </div>
   );

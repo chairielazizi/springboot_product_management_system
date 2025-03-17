@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { API_URL, Product } from "../../api/config";
 
 const ProductDisplay = () => {

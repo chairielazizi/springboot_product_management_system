@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router";
 
 const Header = () => {
@@ -8,11 +7,13 @@ const Header = () => {
         <Link to="/">
           <i className="fa-solid fa-house-chimney-window text-2xl cursor-pointer"></i>
         </Link>
-        <Link to="/product-display">
+        <Link to="/product-management">
           <i className="fa-solid fa-table-cells-large text-2xl cursor-pointer"></i>
         </Link>
       </div>
-      <div className="mr-10">Product Management System</div>
+      <div className="mr-10 text-2xl font-semibold">
+        <Link to="/">Product Management System</Link>
+      </div>
     </div>
   );
 };

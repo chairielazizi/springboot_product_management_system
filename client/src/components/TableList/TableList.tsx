@@ -37,13 +37,13 @@ const TableList = () => {
       <div className="flex justify-end mb-4">
         <Link
           to="/product-form"
-          className="bg-violet-900 text-white px-4 py-2 rounded-md hover:bg-violet-700"
+          className="bg-orange-500 text-black font-semibold px-4 py-2 rounded-md hover:bg-orange-400"
         >
           Create Product
         </Link>
       </div>
       <table className="table-auto w-full rounded-2xl overflow-hidden">
-        <thead className="bg-violet-900">
+        <thead className="bg-orange-400 text-black">
           <tr>
             <th className="px-4 py-2">Name</th>
             <th className="px-4 py-2">Description</th>

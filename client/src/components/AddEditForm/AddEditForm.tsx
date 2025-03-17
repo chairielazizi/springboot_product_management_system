@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router";
 const productStartingData = {
   name: "",
   description: "",
-  price: 0,
+  price: 0.0,
   quantity: 0,
   imageUrl: "",
 };
@@ -70,7 +70,7 @@ const ProductForm = () => {
             Name
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-slate-800 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             id="name"
             type="text"
             value={product.name}
@@ -87,7 +87,7 @@ const ProductForm = () => {
             Description
           </label>
           <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-slate-800 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             id="description"
             value={product.description}
             onChange={handleChange}
@@ -100,7 +100,7 @@ const ProductForm = () => {
             Price
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3   leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-slate-800 shadow appearance-none border rounded w-full py-2 px-3   leading-tight focus:outline-none focus:shadow-outline"
             id="price"
             type="number"
             value={product.price}
@@ -114,6 +114,7 @@ const ProductForm = () => {
             required
             min={0}
             step={0.01}
+            placeholder={`${0.0}`}
           />
         </div>
         <div className="mb-4">
@@ -121,7 +122,7 @@ const ProductForm = () => {
             Quantity
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3   leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-slate-800 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             id="quantity"
             type="number"
             value={product.quantity}
@@ -140,7 +141,7 @@ const ProductForm = () => {
             Image URL
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-slate-800 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             id="imageUrl"
             type="text"
             value={product.imageUrl}
@@ -150,7 +151,7 @@ const ProductForm = () => {
         </div>
         <button
           type="submit"
-          className="bg-violet-900 text-white px-4 py-2 rounded-md hover:bg-violet-700 cursor-pointer"
+          className="bg-orange-500 text-black font-semibold px-4 py-2 rounded-md hover:bg-orange-400 cursor-pointer"
         >
           {productId ? "Update Product" : "Create Product"}
         </button>
