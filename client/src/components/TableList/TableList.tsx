@@ -53,7 +53,7 @@ const TableList = () => {
             <th className="px-4 py-2">Action</th>
           </tr>
         </thead>
-        <tbody className="bg-slate-300 text-gray-900 font-semibold">
+        <tbody className="bg-white text-gray-900 font-semibold">
           {products.map((product, index) => (
             <tr key={index} className="hover:bg-slate-100 border">
               <td className="border px-4 py-2">{product.name}</td>
