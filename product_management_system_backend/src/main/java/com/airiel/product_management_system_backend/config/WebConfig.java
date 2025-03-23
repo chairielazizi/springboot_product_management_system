@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://product-management-system-backend-rrvu.onrender.com")
+                .allowedOrigins("https://springboot-product-management-system.onrender.com")
                 .allowedMethods("*")
                 .allowedHeaders("*");
     }
