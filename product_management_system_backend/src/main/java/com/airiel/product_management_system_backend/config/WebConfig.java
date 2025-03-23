@@ -8,10 +8,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("https://springboot-product-management-system.onrender.com")
-                .allowedMethods("*")
-                .allowedHeaders("*");
+        registry.addMapping("/api/**")
+            .allowedOrigins("https://springboot-product-management-system.onrender.com")
+            .allowedMethods("*")
+            .allowedHeaders("*");
+    System.out.println("CORS configuration applied to /api/**");
     }
 
     @Override
