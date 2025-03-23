@@ -1,0 +1,28 @@
+#use offical maven image to build spring boot app
+FROM maven:3.8.4-openjdk-17 AS build
+
+#set working directory
+WORKDIR /app
+
+#copy pom.xml and install dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+#copy source code and build app
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+#use official openjdk image for running the app
+FROM openjdk:17-jdk-slim
+
+#set working directory
+WORKDIR /app
+
+#copy the jar file from the build stage
+COPY --from=build /app/target/*.jar app.jar
+
+#expose port 8080
+EXPOSE 8080
+
+#run the app
+CMD ["java", "-jar", "app.jar"]
